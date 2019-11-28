@@ -143,8 +143,8 @@ for iFolds = 1:nFolds
     parameter.ev{parameter.net.index}.t = iFolds;
     parameter.Loss(iFolds)              = parameter.net.loss(parameter.net.index);
     tTest(bd*iFolds+(1-bd):bd*iFolds,:) = parameter.net.activityOutput{1};
-    act(bd*iFolds+(1-bd):bd*iFolds,:)   = parameter.net.actualLabel;
-    out(bd*iFolds+(1-bd):bd*iFolds,:)   = parameter.net.classPerdiction;
+    % act(bd*iFolds+(1-bd):bd*iFolds,:)   = parameter.net.actualLabel;
+    % out(bd*iFolds+(1-bd):bd*iFolds,:)   = parameter.net.classPerdiction;
     parameter.cr(iFolds)                = parameter.net.classRate;
     ClassificationRate(iFolds)          = mean(parameter.cr);
     parameter.residual_error(bd*iFolds+(1-bd):bd*iFolds,:) = parameter.net.residual_error;
@@ -190,7 +190,7 @@ end
 clc
 
 %% statistical measure
-[performance.f_measure,performance.g_mean,performance.recall,performance.precision,performance.err] = performanceMeasure(act(chunkSize+1:end), out(chunkSize+1:end), M);
+% [performance.f_measure,performance.g_mean,performance.recall,performance.precision,performance.err] = performanceMeasure(act(chunkSize+1:end), out(chunkSize+1:end), M);
 
 parameter.nFolds = nFolds;
 performance.update_time         = [sum(parameter.net.update_time) mean(parameter.net.update_time) std(parameter.net.update_time)];
